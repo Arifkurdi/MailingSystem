@@ -1,0 +1,33 @@
+@{
+    var activeFolder = ViewData["ActiveFolder"] as string;
+    var folders = new[]
+    {
+        (Name: "Inbox", Action: "Index", Icon: "bi-inbox"),
+        (Name: "Sent", Action: "Sent", Icon: "bi-send"),
+        (Name: "Archive", Action: "Archive", Icon: "bi-archive"),
+        (Name: "Drafts", Action: "Drafts", Icon: "bi-file-earmark-text")
+    };
+}
+<div class="sidebar-menu d-flex flex-column">
+    <div class="compose-container">
+        <button type="button" id="openCompose" class="compose-button btn">
+            <i class="bi bi-pencil-square" aria-hidden="true"></i>
+            <span>@Localizer["Compose"]</span>
+        </button>
+    </div>
+    <nav aria-label="@Localizer["CorrespondenceFolders"]">
+        <ul class="folder-list nav nav-pills flex-column gap-1">
+            @foreach (var folder in folders)
+            {
+                var isActive = activeFolder == folder.Name;
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Home" asp-action="@folder.Action"
+                       class="folder-link nav-link @(isActive ? "active" : "")" aria-current="@(isActive ? "page" : null)">
+                        <i class="bi @folder.Icon" aria-hidden="true"></i>
+                        <span>@Localizer[folder.Name]</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

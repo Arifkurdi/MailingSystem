@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+  <data name="BackToFolder" xml:space="preserve">
+    <value>Back to {0}</value>
+  </data>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+  <data name="Inbox" xml:space="preserve">
+    <value>Inbox</value>
+  </data>
+  <data name="Sent" xml:space="preserve">
+    <value>Sent</value>
+  </data>
+  <data name="Archive" xml:space="preserve">
+    <value>Archive</value>
+  </data>
+  <data name="Drafts" xml:space="preserve">
+    <value>Drafts</value>
+  </data>
+  <data name="CorrespondenceFolders" xml:space="preserve">
+    <value>Correspondence folders</value>
+  </data>
+  <data name="SwitchLanguage" xml:space="preserve">
+    <value>Switch to Arabic</value>
+  </data>
+  <data name="OtherLanguage" xml:space="preserve">
+    <value>العربية</value>
+  </data>
+  <data name="EmptyFolder" xml:space="preserve">
+    <value>This folder has no messages yet.</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome {0}</value>
+  </data>
+  <data name="Mail Details" xml:space="preserve">
+    <value>Mail Details</value>
+  </data>
+  <data name="BackToInbox" xml:space="preserve">
+    <value>Back to Inbox</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To: {0}</value>
+  </data>
+  <data name="Action1" xml:space="preserve">
+    <value>Action1</value>
+  </data>
+  <data name="Action2" xml:space="preserve">
+    <value>Action2</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Search everything...</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="EmptyInbox" xml:space="preserve">
+    <value>Your inbox is empty.</value>
+  </data>
+  <data name="NoMessages" xml:space="preserve">
+    <value>0 messages</value>
+  </data>
+  <data name="MessageRange" xml:space="preserve">
+    <value>{0}–{1} of {2}</value>
+  </data>
+  <data name="PageNumber" xml:space="preserve">
+    <value>Page {0} of {1}</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="SelectMessage" xml:space="preserve">
+    <value>Select message: {0} from {1}</value>
+  </data>
+  <data name="SearchAll" xml:space="preserve">
+    <value>Search in all resources</value>
+  </data>
+  <data name="Correspondence" xml:space="preserve">
+    <value>Correspondence</value>
+  </data>
+  <data name="Compose" xml:space="preserve">
+    <value>Compose</value>
+  </data>
+  <data name="Recipient" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="ComposePreview" xml:space="preserve">
+    <value>Messages entered here are not sent or saved.</value>
+  </data>
+  <data name="NewMessage" xml:space="preserve">
+    <value>New Message</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>Minimize</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Cc" xml:space="preserve">
+    <value>CC</value>
+  </data>
+  <data name="WriteMessagePlaceholder" xml:space="preserve">
+    <value>Write your message...</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="ClearMessage" xml:space="preserve">
+    <value>Clear message</value>
+  </data>
+</root>

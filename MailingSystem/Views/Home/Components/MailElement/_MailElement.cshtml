@@ -1,0 +1,30 @@
+@model MailingSystem.ViewModel.MailViewModel
+
+<div class="mail-item @(Model.Mail.IsRead ? "read" : "unread")">
+    <div class="mail-actions">
+        <input type="checkbox" class="mail-checkbox"
+               aria-label="@Localizer["SelectMessage", Model.Mail.Subject, Model.Mail.From]" />
+    </div>
+
+    <a class="wrapper" asp-controller="Details" asp-action="Index" asp-route-id="@Model.Mail.Id"
+       asp-route-page="@Model.FolderPage" asp-route-folder="@Model.FolderName">
+        <div class="mail-sender">
+            @Model.Mail.From
+        </div>
+
+        <div class="mail-content">
+            <span class="mail-subject">
+                @Model.Mail.Subject
+            </span>
+
+            <span class="mail-preview">
+                - @Model.Mail.Body
+            </span>
+        </div>
+
+        <div class="mail-date">
+            @Model.Mail.SentAt.ToString("MMM dd")
+        </div>
+
+    </a>
+</div>

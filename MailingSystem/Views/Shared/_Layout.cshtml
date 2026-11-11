@@ -1,50 +1,79 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@{
+    var culture = CultureInfo.CurrentUICulture;
+    var nextCulture = culture.TwoLetterISOLanguageName == "ar" ? "en" : "ar";
+    var returnUrl = $"{Context.Request.PathBase}{Context.Request.Path}{Context.Request.QueryString}";
+}
+<!DOCTYPE html>
+<html lang="@culture.Name" dir="@(culture.TextInfo.IsRightToLeft ? "rtl" : "ltr")">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MailingSystem</title>
+    <title>@Localizer[ViewData["Title"]?.ToString() ?? "Inbox"] - MailingSystem</title>
     <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @if (culture.TextInfo.IsRightToLeft)
+    {
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" asp-append-version="true" />
+    }
+    else
+    {
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    }
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MailingSystem.styles.css" asp-append-version="true" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MailingSystem</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - MailingSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+<body>
+    <div class="app-shell">
+        <header class="app-header" dir="ltr">
+            <nav class="navbar bg-body border-bottom py-3">
+                <div class="header container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MailingSystem</a>
+                    <div class="header-actions">
+                        <div class="search-container">
+                            <form class="m-0" method="post">
+                                <input class="form-control" type="search"
+                                       dir="@(culture.TextInfo.IsRightToLeft ? "rtl" : "ltr")"
+                                       placeholder="@Localizer["SearchPlaceholder"]" aria-label="@Localizer["Search"]">
+                            </form>
+                        </div>
+
+                        <form class="language-form" asp-area="" asp-controller="Language" asp-action="SetLanguage"
+                              method="post">
+                            <input type="hidden" name="culture" value="@nextCulture" />
+                            <input type="hidden" name="returnUrl" value="@returnUrl" />
+                            <button type="submit"
+                                    class="language-button btn btn-outline-secondary d-inline-flex align-items-center gap-2"
+                                    lang="@nextCulture"
+                                    aria-label="@Localizer["SwitchLanguage"]">@Localizer["OtherLanguage"] <i
+                                class="bi bi-globe"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <aside class="app-sidebar bg-body-tertiary py-3">
+                <partial name="_Sidebar" />
+            </aside>
+            <div class="app-workspace">
+                <main role="main" class="app-content pe-4">
+                    @RenderBody()
+                </main>
+
+                @* <footer class="footer border-top text-body-secondary py-3">
+                    <div class="container">
+                        &copy; 2026 - MailingSystem
+                    </div>
+                </footer> *@
+            </div>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+        <partial name="_ComposeModal" />
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/compose.js"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+
 </html>

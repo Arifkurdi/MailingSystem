@@ -1,7 +1,20 @@
+using Microsoft.AspNetCore.Localization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.SetDefaultCulture("en")
+        // Culture controls date and number formatting.
+        .AddSupportedCultures("en", "ar")
+        // UI culture selects the translated resource strings.
+        .AddSupportedUICultures("en", "ar");
+    options.RequestCultureProviders = [new CookieRequestCultureProvider()];
+});
+builder.Services.AddSingleton<Services.Interface.IMailService, Services.MockMailService>();
 
 var app = builder.Build();
 
@@ -15,14 +28,15 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseRequestLocalization();
 
 app.UseAuthorization();
 
 app.MapStaticAssets();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 

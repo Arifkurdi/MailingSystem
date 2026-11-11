@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="BackToFolder" xml:space="preserve">
+    <value>العودة إلى {0}</value>
+  </data>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms</value>
+  </resheader>
+
+  <!-- Navigation and folders -->
+
+  <data name="Inbox" xml:space="preserve">
+    <value>الوارد</value>
+  </data>
+  <data name="Sent" xml:space="preserve">
+    <value>الصادر</value>
+  </data>
+  <data name="Archive" xml:space="preserve">
+    <value>الأرشيف</value>
+  </data>
+  <data name="Drafts" xml:space="preserve">
+    <value>المسودات</value>
+  </data>
+  <data name="CorrespondenceFolders" xml:space="preserve">
+    <value>مجلدات المراسلات</value>
+  </data>
+  <data name="Correspondence" xml:space="preserve">
+    <value>المراسلات</value>
+  </data>
+
+  <!-- Language -->
+
+  <data name="SwitchLanguage" xml:space="preserve">
+    <value>التبديل إلى الإنجليزية</value>
+  </data>
+  <data name="OtherLanguage" xml:space="preserve">
+    <value>English</value>
+  </data>
+
+  <!-- General -->
+
+  <data name="Welcome" xml:space="preserve">
+    <value>مرحباً {0}</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>إغلاق</value>
+  </data>
+  <data name="Minimize" xml:space="preserve">
+    <value>تصغير</value>
+  </data>
+  <data name="Maximize" xml:space="preserve">
+    <value>تكبير</value>
+  </data>
+
+  <!-- Mail details -->
+
+  <data name="Mail Details" xml:space="preserve">
+    <value>تفاصيل الرسالة</value>
+  </data>
+  <data name="BackToInbox" xml:space="preserve">
+    <value>العودة إلى صندوق الوارد</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>إلى: {0}</value>
+  </data>
+
+  <!-- Search -->
+
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>البحث في المراسلات...</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="searchAll" xml:space="preserve">
+    <value>بحث في جميع المراسلات</value>
+  </data>
+
+  <!-- Empty states -->
+
+  <data name="EmptyFolder" xml:space="preserve">
+    <value>لا توجد رسائل في هذا المجلد.</value>
+  </data>
+  <data name="EmptyInbox" xml:space="preserve">
+    <value>لا توجد رسائل واردة.</value>
+  </data>
+  <data name="NoMessages" xml:space="preserve">
+    <value>لا توجد رسائل</value>
+  </data>
+
+  <!-- Pagination -->
+
+  <data name="MessageRange" xml:space="preserve">
+    <value>{0}–{1} من {2}</value>
+  </data>
+  <data name="PageNumber" xml:space="preserve">
+    <value>الصفحة {0} من {1}</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>السابق</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>التالي</value>
+  </data>
+  <data name="SelectMessage" xml:space="preserve">
+    <value>تحديد الرسالة: {0} من {1}</value>
+  </data>
+
+  <!-- Compose -->
+
+  <data name="Compose" xml:space="preserve">
+    <value>إنشاء رسالة</value>
+  </data>
+  <data name="NewMessage" xml:space="preserve">
+    <value>رسالة جديدة</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>عنوان الرسالة</value>
+  </data>
+  <data name="TitlePlaceholder" xml:space="preserve">
+    <value>أدخل عنوان الرسالة</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>الموضوع</value>
+  </data>
+  <data name="SubjectPlaceholder" xml:space="preserve">
+    <value>أدخل موضوع الرسالة</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>نص الرسالة</value>
+  </data>
+  <data name="WriteMessagePlaceholder" xml:space="preserve">
+    <value>اكتب نص الرسالة هنا...</value>
+  </data>
+
+  <!-- Recipients -->
+
+  <data name="Recipient" xml:space="preserve">
+    <value>إلى</value>
+  </data>
+  <data name="Cc" xml:space="preserve">
+    <value>نسخة إلى</value>
+  </data>
+  <data name="SelectRecipients" xml:space="preserve">
+    <value>اختر المرسل إليهم</value>
+  </data>
+  <data name="SelectCcRecipients" xml:space="preserve">
+    <value>اختر مستلمي النسخة</value>
+  </data>
+
+  <!-- Compose actions -->
+
+  <data name="Send" xml:space="preserve">
+    <value>إرسال</value>
+  </data>
+  <data name="ClearMessage" xml:space="preserve">
+    <value>إفراغ النموذج</value>
+  </data>
+  <data name="SaveDraft" xml:space="preserve">
+    <value>حفظ كمسودة</value>
+  </data>
+  <data name="ComposePreview" xml:space="preserve">
+    <value>هذا النموذج مخصص للمعاينة فقط، ولن يتم إرسال الرسالة أو حفظها.</value>
+  </data>
+
+  <!-- Notifications -->
+
+  <data name="NewMessageNotification" xml:space="preserve">
+    <value>لديك رسالة واردة جديدة</value>
+  </data>
+  <data name="DismissNotification" xml:space="preserve">
+    <value>إغلاق التنبيه</value>
+  </data>
+
+  <!-- Existing action placeholders -->
+
+  <data name="Action1" xml:space="preserve">
+    <value>إجراء ١</value>
+  </data>
+  <data name="Action2" xml:space="preserve">
+    <value>إجراء ٢</value>
+  </data>
+</root>

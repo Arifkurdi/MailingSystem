@@ -1,0 +1,55 @@
+<div id="composeWindow" class="compose-window" role="dialog" aria-modal="false" aria-labelledby="composeTitle" hidden>
+
+    <div class="compose-header">
+        <span id="composeTitle">@Localizer["NewMessage"]</span>
+
+        <div class="compose-header-actions">
+            <button type="button" id="minimizeCompose" aria-label="@Localizer["Minimize"]">
+                <i class="bi bi-dash"></i>
+            </button>
+            <button type="button" class="d-none" id="maximizeCompose" aria-label="@Localizer["Miximize"]">
+                <i class="bi bi-chevron-up"></i>
+            </button>
+            <button type="button" id="closeCompose" aria-label="@Localizer["Close"]">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+    </div>
+
+    @* 
+            *** For `To` and `CC` we will use a list on  
+    
+     *@
+    <form id="composeForm">
+        <div class="compose-field">
+            <input id="composeTitleInput" name="Title" type="text" placeholder="@Localizer["Title"]"
+                   aria-label="@Localizer["Title"]" />
+        </div>
+        <div class="compose-field">
+            <input id="composeToInput" name="to" type="text" placeholder="@Localizer["Recipient"]:"
+                   aria-label="@Localizer["Recipient"]" />
+        </div>
+        <div class="compose-field">
+            <input id="composeCCInput" name="cc" type="text" placeholder="@Localizer["Cc"]:"
+                   aria-label="@Localizer["Cc"]" />
+        </div>
+        <div class="compose-field">
+            <input id="composeSubject" name="Subject" type="text" placeholder="@Localizer["Subject"]"
+                   aria-label="@Localizer["Subject"]" />
+        </div>
+        <textarea id="composeBody" name="Body" class="compose-body" placeholder="@Localizer["WriteMessagePlaceholder"]"
+                  aria-label="@Localizer["Message"]"></textarea>
+        <div class="compose-footer">
+            <button type="button" class="btn btn-primary send-button">
+                <i class="bi bi-send"></i>
+                @Localizer["Send"]
+            </button>
+
+            <button type="button" class="btn btn-outline-secondary border-0 fs-meduim"
+                    aria-label="@Localizer["SaveDraft"]" title="@Localizer["SaveDraft"]">
+                <i class="bi bi-file-earmark-text"></i>
+            </button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,82 @@
+@model ViewModel.HomeViewModel
+@{
+    var isRtl = CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft;
+    var previousIcon = isRtl ? "bi-chevron-right" : "bi-chevron-left";
+    var nextIcon = isRtl ? "bi-chevron-left" : "bi-chevron-right";
+    var mails = Model.Mails;
+}
+
+<div class="mail-table">
+    <div class="toolbar-actions">
+        <div class="folder-name">@Localizer[@Model.FolderName]</div>
+        <div class="actions">
+            <button type="button" class="action-button">
+                @Localizer["Action1"]
+            </button>
+            <button type="button" class="action-button">
+                @Localizer["Action2"]
+            </button>
+            <button type="button" class="action-button">
+                @Localizer["Action2"]
+            </button>
+        </div>
+    </div>
+    @if (!mails.Items.Any())
+    {
+        <div class="empty-state">
+            @Localizer["EmptyInbox"]
+        </div>
+    }
+    else
+    {
+        @foreach (var mail in mails.Items)
+        {
+            <partial name="Components/MailElement/_MailElement"
+                     model="@(new MailingSystem.ViewModel.MailViewModel { Mail = mail, FolderPage = mails.CurrentPage, FolderName = Model.FolderName })" />
+        }
+    }
+
+    <div class="pagination-container">
+
+        <span class="pagination-info">
+            @if (mails.TotalCount == 0)
+            {
+                @Localizer["NoMessages"]
+            }
+            else
+            {
+                var start = (mails.CurrentPage - 1) * mails.PageSize + 1;
+                var end = Math.Min(
+                    mails.CurrentPage * mails.PageSize,
+                    mails.TotalCount
+                );
+                @Localizer["MessageRange", start, end, mails.TotalCount]
+            }
+        </span>
+
+        <div class="pagination-actions">
+            @if (mails.HasPreviousPage)
+            {
+                <a asp-controller="Home" asp-action="@Model.FolderAction" asp-route-page="@(mails.CurrentPage - 1)"
+                   class="pagination-button text-decoration-none">
+                    <i class="bi fs-6 @previousIcon" aria-hidden="true"></i>
+                    @Localizer["Previous"]
+                </a>
+            }
+
+            <span class="current-page">
+                @Localizer["PageNumber", mails.CurrentPage, mails.TotalPages]
+            </span>
+
+            @if (mails.HasNextPage)
+            {
+                <a asp-controller="Home" asp-action="@Model.FolderAction" asp-route-page="@(mails.CurrentPage + 1)"
+                   class="pagination-button text-decoration-none">
+                    @Localizer["Next"]
+                    <i class="bi fs-6 @nextIcon" aria-hidden="true"></i>
+                </a>
+
+            }
+        </div>
+    </div>
+</div>

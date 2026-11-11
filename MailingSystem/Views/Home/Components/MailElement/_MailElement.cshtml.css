@@ -1,0 +1,112 @@
+.mail-item ::deep .wrapper {
+  text-decoration: none;
+  color: inherit;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr) 100px;
+  align-items: center;
+  min-width: 0;
+  min-height: 52px;
+}
+
+.mail-item ::deep .wrapper:hover,
+.mail-item ::deep .wrapper:focus,
+.mail-item ::deep .wrapper:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.mail-item ::deep .wrapper:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: -2px;
+}
+
+.mail-item {
+  display: grid;
+  grid-template-columns: 65px minmax(0, 1fr);
+  align-items: center;
+
+  min-height: 52px;
+  padding: 0 16px;
+
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+
+  transition: background-color 0.15s ease;
+}
+
+.mail-item:hover {
+  background: #f2f6fc;
+  box-shadow:
+    inset 0 1px 0 #e5e7eb,
+    inset 0 -1px 0 #e5e7eb;
+}
+
+.mail-item.read {
+  background: #f2f6fc;
+  font-weight: 400;
+}
+
+.mail-item.unread {
+  background: #ffffff;
+  font-weight: 600;
+}
+
+.mail-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mail-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #2563eb;
+}
+
+.mail-sender {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  padding-inline-end: 20px;
+}
+
+.mail-content {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+  gap: 6px;
+}
+
+.mail-subject {
+  flex-shrink: 0;
+  max-width: 45%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.mail-preview {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 400;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mail-date {
+  text-align: end;
+  font-size: 12px;
+  white-space: nowrap;
+  color: #6b7280;
+}
+
+.mail-item.unread .mail-date {
+  color: #111827;
+  font-weight: 600;
+}

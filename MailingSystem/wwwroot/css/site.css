@@ -8,8 +8,14 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow:
+    0 0 0 0.1rem white,
+    0 0 0 0.25rem #258cfb;
 }
 
 html {
@@ -18,14 +24,93 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+  margin: 0;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+.folder-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+
+.compose-container {
+  padding: 10px 20px;
+}
+
+.folder-link,
+.compose-button,
+.sidebar-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sidebar-menu,
+.sidebar-menu nav,
+.folder-list .nav-item {
+  width: 100%;
+}
+
+.folder-list.nav-pills .folder-link {
+  width: 100%;
+  min-height: 44px;
+  gap: 16px;
+  padding: 10px 20px;
+  border-radius: 0;
+  color: #1f1f1f;
+  background-color: transparent;
+}
+
+.folder-list.nav-pills .folder-link:hover {
+  background-color: #e8edf5;
+}
+
+.folder-list.nav-pills .folder-link.active {
+  color: #102a43;
+  background-color: #d3e3fd;
+  font-weight: 600;
+}
+
+.compose-button.btn {
+  --bs-btn-color: #102a43;
+  --bs-btn-bg: #c2e7ff;
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: #102a43;
+  --bs-btn-hover-bg: #b3dcfa;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color: #102a43;
+  --bs-btn-active-bg: #d3e3fd;
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-focus-shadow-rgb: 83, 132, 194;
+  min-height: 64px;
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 20px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.folder-link .bi,
+.compose-button .bi {
+  flex: 0 0 24px;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.folder-link:focus-visible {
+  outline: 2px solid #5384c2;
+  outline-offset: 2px;
+}
+
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
   color: var(--bs-secondary-color);
   text-align: end;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
   text-align: start;
 }

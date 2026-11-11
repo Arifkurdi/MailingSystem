@@ -60,6 +60,50 @@ public class MailPaginationTests
             Assert.Equal((await service.GetAllAsync()).Select(mail => mail.Id), allItems.Select(mail => mail.Id));
     }
 
+    [Theory]
+    [InlineData("Inbox")]
+    [InlineData("Sent")]
+    [InlineData("Archive")]
+    [InlineData("Drafts")]
+    public async Task UnreadCounts_CoversTheWholeFolderAcrossPagesAndReflectsReadStatus(string folder)
+    {
+        var service = new MockMailService();
+        var wholeFolder = await GetPage(service, folder, 1, 100);
+        var firstPage = await GetPage(service, folder, 1, 1);
+        foreach (var mail in wholeFolder.Items)
+            mail.IsRead = false;
+
+        var counts = await service.GetUnreadCountsAsync();
+
+        Assert.Equal(wholeFolder.Items.Count(mail => !mail.IsRead), counts[folder]);
+        Assert.True(counts[folder] > firstPage.Items.Count(mail => !mail.IsRead));
+
+        foreach (var mail in wholeFolder.Items)
+            mail.IsRead = true;
+
+        counts = await service.GetUnreadCountsAsync();
+        Assert.Equal(0, counts[folder]);
+    }
+
+    [Fact]
+    public async Task UnreadCounts_NewMailIncreasesInboxCount()
+    {
+        var service = new MockMailService();
+        var before = await service.GetUnreadCountsAsync();
+
+        await service.CreateAsync(new CreateMailViewModel
+        {
+            Subject = "Unread message",
+            Content = "Body",
+            Recipient = "recipient@example.com"
+        });
+
+        var after = await service.GetUnreadCountsAsync();
+        Assert.Equal(before["Inbox"] + 1, after["Inbox"]);
+        foreach (var folder in new[] { "Sent", "Archive", "Drafts" })
+            Assert.Equal(before[folder], after[folder]);
+    }
+
     public static IEnumerable<object[]> InvalidPaginationInputs()
     {
         foreach (var folder in new[] { "Inbox", "Sent", "Archive", "Drafts" })

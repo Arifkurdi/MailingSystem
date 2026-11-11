@@ -46,5 +46,8 @@ internal sealed class StubMailService : IMailService
 
     public Task<IReadOnlyList<Mail>> GetAllAsync() => throw new NotSupportedException();
 
+    public Task<IReadOnlyDictionary<string, int>> GetUnreadCountsAsync()
+        => Task.FromResult<IReadOnlyDictionary<string, int>>(new Dictionary<string, int>());
+
     public Task CreateAsync(CreateMailViewModel model) => throw new NotSupportedException();
 }

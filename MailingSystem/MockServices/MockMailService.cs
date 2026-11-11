@@ -48,6 +48,21 @@ namespace Services
             }
         }
 
+        public Task<IReadOnlyDictionary<string, int>> GetUnreadCountsAsync()
+        {
+            lock (_lock)
+            {
+                IReadOnlyDictionary<string, int> counts = new Dictionary<string, int>
+                {
+                    ["Inbox"] = _mails.Count(mail => !mail.IsRead),
+                    ["Sent"] = _mails.Skip(10).Take(10).Count(mail => !mail.IsRead),
+                    ["Archive"] = _mails.Skip(20).Take(5).Count(mail => !mail.IsRead),
+                    ["Drafts"] = _mails.Skip(30).Take(3).Count(mail => !mail.IsRead)
+                };
+                return Task.FromResult(counts);
+            }
+        }
+
         public Task CreateAsync(CreateMailViewModel model)
         {
             lock (_lock)

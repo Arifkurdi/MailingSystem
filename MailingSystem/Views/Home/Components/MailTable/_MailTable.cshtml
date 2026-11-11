@@ -1,14 +1,23 @@
 @model ViewModel.HomeViewModel
+@inject Services.Interface.IMailService MailService
 @{
     var isRtl = CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft;
     var previousIcon = isRtl ? "bi-chevron-right" : "bi-chevron-left";
     var nextIcon = isRtl ? "bi-chevron-left" : "bi-chevron-right";
     var mails = Model.Mails;
+    var unreadCounts = await MailService.GetUnreadCountsAsync();
+    var unreadCount = unreadCounts.GetValueOrDefault(Model.FolderName);
 }
 
 <div class="mail-table">
     <div class="toolbar-actions">
-        <div class="folder-name">@Localizer[@Model.FolderName]</div>
+        <div class="folder-name">
+            @Localizer[Model.FolderName]
+            @if (unreadCount > 0)
+            {
+                <span class="folder-unread-count" aria-label="@Localizer["UnreadCount", unreadCount]">(@unreadCount)</span>
+            }
+        </div>
         <div class="actions">
             <button type="button" class="action-button">
                 @Localizer["Action1"]

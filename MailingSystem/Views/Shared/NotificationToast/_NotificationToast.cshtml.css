@@ -1,0 +1,100 @@
+.mail-toast-container {
+  position: fixed;
+  inset-block-start: 16px;
+  inset-inline-end: 16px;
+  z-index: 1100;
+}
+
+/* Center the notification at the top of the viewport */
+.mail-notification-container {
+  position: fixed;
+  inset-block-start: 24px;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+
+  width: min(300px, calc(100vw - 32px));
+  z-index: 2000;
+
+  pointer-events: none;
+}
+
+/* Notification appearance */
+.mail-notification {
+  width: 100%;
+  max-width: none;
+
+  background: #0b65bd;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 10px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+
+  pointer-events: auto;
+}
+
+/* Horizontal layout */
+.mail-notification-content {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 10px 12px;
+}
+
+/* Icon */
+.mail-notification-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+
+  font-size: 20px;
+}
+
+/* Text */
+.mail-notification-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.mail-notification-text strong {
+  font-size: 14;
+  font-weight: 600;
+}
+
+.mail-notification-text span {
+  font-size: 12px;
+  opacity: 0.95;
+}
+
+.mail-notification-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  background: transparent;
+  color: inherit;
+
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.mail-notification-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+}

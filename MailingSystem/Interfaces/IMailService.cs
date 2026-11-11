@@ -7,6 +7,8 @@ public interface IMailService
 {
     public Task<IReadOnlyList<Mail>> GetAllAsync();
 
+    Task<IReadOnlyDictionary<string, int>> GetUnreadCountsAsync();
+
     Task<PaginatedResult<Mail>> GetInboxPaginatedAsync(int page, int pageSize);
 
     Task<PaginatedResult<Mail>> GetSentPaginatedAsync(int page, int pageSize);

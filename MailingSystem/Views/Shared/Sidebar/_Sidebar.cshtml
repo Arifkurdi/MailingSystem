@@ -1,5 +1,7 @@
+@inject Services.Interface.IMailService MailService
 @{
     var activeFolder = ViewData["ActiveFolder"] as string;
+    var unreadCounts = await MailService.GetUnreadCountsAsync();
     var folders = new[]
     {
         (Name: "Inbox", Action: "Index", Icon: "bi-inbox"),
@@ -23,8 +25,14 @@
                 <li class="nav-item">
                     <a asp-area="" asp-controller="Home" asp-action="@folder.Action"
                        class="folder-link nav-link @(isActive ? "active" : "")" aria-current="@(isActive ? "page" : null)">
-                        <i class="bi @folder.Icon" aria-hidden="true"></i>
+                        <i class="bi @(isActive ? $"{folder.Icon}-fill text-p" : folder.Icon) fw-bold"
+                           aria-hidden="true"></i>
                         <span>@Localizer[folder.Name]</span>
+                        @if (!isActive && unreadCounts.TryGetValue(folder.Name, out var unreadCount) && unreadCount > 0)
+                        {
+                            <span class="folder-unread-count"
+                                  aria-label="@Localizer["UnreadCount", unreadCount]">@unreadCount</span>
+                        }
                     </a>
                 </li>
             }

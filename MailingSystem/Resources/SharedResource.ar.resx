@@ -189,4 +189,7 @@
   <data name="Action2" xml:space="preserve">
     <value>إجراء ٢</value>
   </data>
+  <data name="UnreadCount" xml:space="preserve">
+    <value>الرسائل غير المقروءة: {0}</value>
+  </data>
 </root>

@@ -108,6 +108,9 @@
   <data name="NewMessage" xml:space="preserve">
     <value>New Message</value>
   </data>
+  <data name="NewMessageNotification" xml:space="preserve">
+    <value>You have a new incoming message.</value>
+  </data>
   <data name="Minimize" xml:space="preserve">
     <value>Minimize</value>
   </data>
@@ -125,5 +128,8 @@
   </data>
   <data name="ClearMessage" xml:space="preserve">
     <value>Clear message</value>
+  </data>
+  <data name="UnreadCount" xml:space="preserve">
+    <value>{0} unread messages</value>
   </data>
 </root>

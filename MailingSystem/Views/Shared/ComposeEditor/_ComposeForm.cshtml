@@ -1,0 +1,49 @@
+@{
+    var idPrefix = ViewData["ComposeIdPrefix"] as string ?? "composePage";
+}
+
+<form id="@(idPrefix)Form" class="compose-form">
+    <div class="compose-envelope">
+        <div class="compose-field compose-title-field">
+            <label for="@(idPrefix)TitleInput">@Localizer["Title"]</label>
+            <input id="@(idPrefix)TitleInput" name="Title" type="text" placeholder="@Localizer["TitlePlaceholder"]"
+                   aria-label="@Localizer["Title"]" />
+        </div>
+        <div class="compose-field">
+            <label for="@(idPrefix)ToInput">@Localizer["Recipient"]</label>
+            <select id="@(idPrefix)ToInput" name="To" class="recipient-select" multiple
+                    data-placeholder="@Localizer["SelectRecipients"]"
+                    data-recipient-search-url="@Url.Content("~/api/recipients/search")"
+                    data-no-results="@Localizer["NoRecipientsFound"]" data-loading="@Localizer["LoadingRecipients"]"
+                    data-remove-title="@Localizer["RemoveRecipient"]" aria-label="@Localizer["Recipient"]"></select>
+        </div>
+        <div class="compose-field">
+            <label for="@(idPrefix)CCInput">@Localizer["Cc"]</label>
+            <select id="@(idPrefix)CCInput" name="Cc" class="recipient-select" multiple
+                    data-placeholder="@Localizer["SelectCcRecipients"]"
+                    data-recipient-search-url="@Url.Content("~/api/recipients/search")"
+                    data-no-results="@Localizer["NoRecipientsFound"]" data-loading="@Localizer["LoadingRecipients"]"
+                    data-remove-title="@Localizer["RemoveRecipient"]" aria-label="@Localizer["Cc"]"></select>
+        </div>
+        <div class="compose-field">
+            <label for="@(idPrefix)Subject">@Localizer["Subject"]</label>
+            <input id="@(idPrefix)Subject" name="Subject" type="text" placeholder="@Localizer["SubjectPlaceholder"]"
+                   aria-label="@Localizer["Subject"]" />
+        </div>
+
+    </div>
+
+    @await Html.PartialAsync("~/Views/Shared/ComposeEditor/_ComposeEditor.cshtml")
+
+    <div class="compose-footer">
+        <button type="button" class="btn btn-primary send-button">
+            <i class="bi bi-send-fill"></i>
+            @Localizer["Send"]
+        </button>
+        <button type="button" class="btn compose-draft-button" aria-label="@Localizer["SaveDraft"]"
+                title="@Localizer["SaveDraft"]">
+            <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+            @Localizer["SaveDraft"]
+        </button>
+    </div>
+</form>

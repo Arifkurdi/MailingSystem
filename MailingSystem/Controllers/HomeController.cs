@@ -80,4 +80,9 @@ public class HomeController(IMailService mailService) : Controller
         return View("Index", model);
     }
 
+
+    public IActionResult Compose()
+    {
+        return View();
+    }
 }

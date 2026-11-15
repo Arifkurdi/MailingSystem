@@ -127,7 +127,7 @@
     <value>عنوان الرسالة</value>
   </data>
   <data name="TitlePlaceholder" xml:space="preserve">
-    <value>أدخل عنوان الرسالة</value>
+    <value>العنوان...</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>الموضوع</value>
@@ -191,5 +191,50 @@
   </data>
   <data name="UnreadCount" xml:space="preserve">
     <value>الرسائل غير المقروءة: {0}</value>
+  </data>
+  <data name="ComposeOptions" xml:space="preserve">
+    <value>خيارات إنشاء رسالة</value>
+  </data>
+    <data name="ComposeInWindow" xml:space="preserve">
+      <value>مراسله أخرى</value>
+    </data>
+    <data name="FormattingOptions" xml:space="preserve">
+      <value>خيارات التنسيق</value>
+    </data>
+    <data name="Bold" xml:space="preserve">
+      <value>غامق</value>
+    </data>
+    <data name="Italic" xml:space="preserve">
+      <value>مائل</value>
+    </data>
+    <data name="Underline" xml:space="preserve">
+      <value>تسطير</value>
+    </data>
+    <data name="BulletList" xml:space="preserve">
+      <value>تعداد نقطي</value>
+    </data>
+    <data name="NumberedList" xml:space="preserve">
+      <value>ترقيم</value>
+    </data>
+    <data name="AlignLeft" xml:space="preserve">
+      <value>محاذاة إلى اليسار</value>
+    </data>
+    <data name="AlignCenter" xml:space="preserve">
+      <value>توسيط</value>
+    </data>
+    <data name="AlignRight" xml:space="preserve">
+      <value>محاذاة إلى اليمين</value>
+    </data>
+    <data name="NoRecipientsFound" xml:space="preserve">
+      <value>لم يتم العثور على مستلمين</value>
+    </data>
+    <data name="LoadingRecipients" xml:space="preserve">
+      <value>جارٍ تحميل المستلمين...</value>
+    </data>
+    <data name="RemoveRecipient" xml:space="preserve">
+      <value>إزالة المستلم</value>
+    </data>
+   <data name="ComposeIntro" xml:space="preserve">
+    <value>اختر المستلمين واكتب رسالتك.</value>
   </data>
 </root>

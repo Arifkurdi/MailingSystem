@@ -1,0 +1,65 @@
+.compose-split-button {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  min-height: 60;
+  border-radius: 24px;
+  background: #c2e7ff;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.compose-split-button ::deep > .btn {
+  --bs-btn-color: #001d35;
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: #001d35;
+  --bs-btn-hover-bg: #b3dcfa;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color: #001d35;
+  --bs-btn-active-bg: #a8d5f5;
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-focus-shadow-rgb: 83, 132, 194;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+}
+
+.compose-split-button ::deep > .compose-main-btn {
+  flex: 2;
+  gap: 16px;
+  padding: 20px 8px;
+  padding-inline-start: 20px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-align: center;
+  border-start-start-radius: 24px;
+  border-end-start-radius: 24px;
+}
+
+.compose-split-button ::deep .compose-main-btn .bi {
+  flex-shrink: 0;
+  font-size: 1.65rem;
+  line-height: 1;
+}
+
+.compose-split-button ::deep > .compose-options-btn {
+  flex: 0 0 44px;
+  align-self: stretch;
+  padding: 0;
+  border-start-end-radius: 24px;
+  border-end-end-radius: 24px;
+}
+
+.compose-split-button ::deep > .compose-options-btn::after {
+  margin: 0;
+}
+
+.compose-split-button ::deep > .btn:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 2px solid #001d35;
+  outline-offset: 2px;
+}

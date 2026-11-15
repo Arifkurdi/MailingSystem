@@ -9,12 +9,11 @@
 .mail-notification-container {
   position: fixed;
   inset-block-start: 24px;
-  inset-inline-start: 50%;
-  transform: translateX(-50%);
+  inset-inline: 0;
+  margin-inline: auto;
 
   width: min(300px, calc(100vw - 32px));
   z-index: 2000;
-
   pointer-events: none;
 }
 

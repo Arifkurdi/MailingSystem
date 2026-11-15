@@ -1,0 +1,43 @@
+<div class="mail-editor" data-message-label="@Localizer["Message"]" data-placeholder="@Localizer["WriteMessagePlaceholder"]">
+    <div class="mail-editor-toolbar" role="toolbar" aria-label="@Localizer["FormattingOptions"]">
+        <button type="button" data-editor-command="bold" title="@Localizer["Bold"]" aria-label="@Localizer["Bold"]">
+            <i class="bi bi-type-bold"></i>
+        </button>
+
+        <button type="button" data-editor-command="italic" title="@Localizer["Italic"]" aria-label="@Localizer["Italic"]">
+            <i class="bi bi-type-italic"></i>
+        </button>
+
+        <button type="button" data-editor-command="underline" title="@Localizer["Underline"]" aria-label="@Localizer["Underline"]">
+            <i class="bi bi-type-underline"></i>
+        </button>
+
+        <span class="toolbar-divider"></span>
+
+        <button type="button" data-editor-command="bullet" title="@Localizer["BulletList"]" aria-label="@Localizer["BulletList"]">
+            <i class="bi bi-list-ul"></i>
+        </button>
+
+        <button type="button" data-editor-command="ordered" title="@Localizer["NumberedList"]" aria-label="@Localizer["NumberedList"]">
+            <i class="bi bi-list-ol"></i>
+        </button>
+
+        <span class="toolbar-divider"></span>
+
+        <button type="button" data-editor-command="left" title="@Localizer["AlignLeft"]" aria-label="@Localizer["AlignLeft"]">
+            <i class="bi bi-text-left"></i>
+        </button>
+
+        <button type="button" data-editor-command="center" title="@Localizer["AlignCenter"]" aria-label="@Localizer["AlignCenter"]">
+            <i class="bi bi-text-center"></i>
+        </button>
+
+        <button type="button" data-editor-command="right" title="@Localizer["AlignRight"]" aria-label="@Localizer["AlignRight"]">
+            <i class="bi bi-text-right"></i>
+        </button>
+    </div>
+
+    <div class="mail-editor-content"></div>
+
+    <input type="hidden" name="Body" class="mail-editor-output" />
+</div>

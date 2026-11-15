@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Compose";
+}
+
+<div class="compose-page">
+    <div class="compose-page-heading">
+        <a asp-controller="Home" asp-action="Index" class="compose-back-link">
+            <i class="bi @(CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft ? "bi-arrow-right" : "bi-arrow-left")"
+               aria-hidden="true"></i>
+            @Localizer["BackToInbox"]
+        </a>
+        @* <div class="compose-page-title">
+            <span class="compose-page-icon" aria-hidden="true"><i class="bi bi-pencil-square"></i></span>
+            <div>
+                <h1>@Localizer["NewMessage"]</h1>
+            </div>
+        </div> *@
+    </div>
+
+    <div class="compose-surface">
+        @await Html.PartialAsync("~/Views/Shared/ComposeEditor/_ComposeForm.cshtml")
+    </div>
+</div>

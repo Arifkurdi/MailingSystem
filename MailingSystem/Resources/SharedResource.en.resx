@@ -132,4 +132,70 @@
   <data name="UnreadCount" xml:space="preserve">
     <value>{0} unread messages</value>
   </data>
+  <data name="ComposeOptions" xml:space="preserve">
+    <value>Compose options</value>
+  </data>
+  <data name="ComposeInWindow" xml:space="preserve">
+    <value>َQuick message</value>
+  </data>
+  <data name="FormattingOptions" xml:space="preserve">
+    <value>Message formatting</value>
+  </data>
+  <data name="Bold" xml:space="preserve">
+    <value>Bold</value>
+  </data>
+  <data name="Italic" xml:space="preserve">
+    <value>Italic</value>
+  </data>
+  <data name="Underline" xml:space="preserve">
+    <value>Underline</value>
+  </data>
+  <data name="BulletList" xml:space="preserve">
+    <value>Bullet list</value>
+  </data>
+  <data name="NumberedList" xml:space="preserve">
+    <value>Numbered list</value>
+  </data>
+  <data name="AlignLeft" xml:space="preserve">
+    <value>Align left</value>
+  </data>
+  <data name="AlignCenter" xml:space="preserve">
+    <value>Align center</value>
+  </data>
+  <data name="AlignRight" xml:space="preserve">
+    <value>Align right</value>
+  </data>
+  <data name="NoRecipientsFound" xml:space="preserve">
+    <value>No recipients found</value>
+  </data>
+  <data name="LoadingRecipients" xml:space="preserve">
+    <value>Loading recipients...</value>
+  </data>
+  <data name="RemoveRecipient" xml:space="preserve">
+    <value>Remove recipient</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Message title</value>
+  </data>
+  <data name="SaveDraft" xml:space="preserve">
+    <value>Save draft</value>
+  </data>
+  <data name="Maximize" xml:space="preserve">
+    <value>Maximize</value>
+  </data>
+  <data name="ComposeIntro" xml:space="preserve">
+    <value>Choose your recipients and write your message.</value>
+  </data>
+  <data name="TitlePlaceholder" xml:space="preserve">
+    <value>Give your message a title</value>
+  </data>
+  <data name="SubjectPlaceholder" xml:space="preserve">
+    <value>What is this about?</value>
+  </data>
+  <data name="SelectRecipients" xml:space="preserve">
+    <value>Search by name or email</value>
+  </data>
+  <data name="SelectCcRecipients" xml:space="preserve">
+    <value>Add a copy recipient</value>
+  </data>
 </root>

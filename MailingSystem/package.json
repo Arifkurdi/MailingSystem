@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild Client/editors/mail-editor.js --bundle --minify --format=iife --outfile=wwwroot/js/mail-editor.bundle.js",
-    "watch": "esbuild Client/editors/mail-editor.js --bundle --format=iife --sourcemap --outfile=wwwroot/js/mail-editor.bundle.js --watch"
+    "build:editor": "esbuild Client/mail-editor.js --bundle --minify --format=iife --outfile=wwwroot/js/mail-editor.bundle.js",
+    "watch:editor": "esbuild Client/mail-editor.js --bundle --format=iife --sourcemap --outfile=wwwroot/js/mail-editor.bundle.js --watch",
+    "build:toaster": "esbuild Client/toaster.js --bundle --minify --format=iife --outfile=wwwroot/js/toaster.bundle.js",
+    "watch:toaster": "esbuild Client/toaster.js --bundle --format=iife --sourcemap --outfile=wwwroot/js/toaster.bundle.js --watch"
   },
   "keywords": [],
   "author": "",
@@ -14,7 +16,8 @@
     "@tiptap/core": "^3.34.0",
     "@tiptap/extension-text-align": "^3.34.0",
     "@tiptap/extension-underline": "^3.34.0",
-    "@tiptap/starter-kit": "^3.34.0"
+    "@tiptap/starter-kit": "^3.34.0",
+    "@yusufceng1z/ding": "^0.0.6"
   },
   "devDependencies": {
     "esbuild": "^0.28.2"

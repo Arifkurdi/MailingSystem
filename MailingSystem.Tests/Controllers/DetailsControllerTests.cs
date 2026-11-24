@@ -8,7 +8,7 @@ namespace MailingSystem.Tests.Controllers;
 public class DetailsControllerTests
 {
     [Theory]
-    [InlineData("Inbox", "Index")]
+    [InlineData("Inbox", "Inbox")]
     [InlineData("Sent", "Sent")]
     [InlineData("Archive", "Archive")]
     [InlineData("Drafts", "Drafts")]
@@ -39,7 +39,7 @@ public class DetailsControllerTests
 
         var model = Assert.IsType<MailViewModel>(Assert.IsType<ViewResult>(result).Model);
         Assert.Equal("Inbox", model.FolderName);
-        Assert.Equal("Index", model.FolderAction);
+        Assert.Equal("Inbox", model.FolderAction);
         Assert.Equal(2, model.FolderPage);
     }
 
@@ -85,7 +85,7 @@ public class DetailsControllerTests
         var model = Assert.IsType<MailViewModel>(view.Model);
         Assert.Equal(1, model.FolderPage);
         Assert.Equal("Inbox", model.FolderName);
-        Assert.Equal("Index", model.FolderAction);
+        Assert.Equal("Inbox", model.FolderAction);
     }
 
     [Fact]

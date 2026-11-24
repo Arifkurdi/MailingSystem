@@ -5,6 +5,13 @@
     var previousIcon = isRtl ? "bi-chevron-right" : "bi-chevron-left";
     var nextIcon = isRtl ? "bi-chevron-left" : "bi-chevron-right";
     var mails = Model.Mails;
+    var notificationMail = mails.Items.FirstOrDefault();
+    var notificationDetailsUrl = notificationMail is null ? null : Url.Action("Index", "Details", new
+    {
+        id = notificationMail.Id,
+        page = mails.CurrentPage,
+        folder = Model.FolderName
+    });
     var unreadCounts = await MailService.GetUnreadCountsAsync();
     var unreadCount = unreadCounts.GetValueOrDefault(Model.FolderName);
 }
@@ -19,8 +26,12 @@
             }
         </div>
         <div class="actions">
-            <button type="button" class="action-button">
-                @Localizer["Action1"]
+            <button type="button" class="action-button" id="showNewMessageNotification"
+                    data-details-url="@notificationDetailsUrl"
+                    data-notification-title="@Localizer["NewMessage"]"
+                    data-notification-message="@(notificationMail?.Subject)"
+                    disabled="@(notificationDetailsUrl is null)">
+                Notification
             </button>
             <button type="button" class="action-button">
                 @Localizer["Action2"]

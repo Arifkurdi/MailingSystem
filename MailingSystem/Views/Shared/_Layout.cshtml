@@ -32,7 +32,7 @@
         <header class="app-header" dir="ltr">
             <nav class="navbar bg-body border-bottom py-3">
                 <div class="header container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MailingSystem</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Inbox">MailingSystem</a>
                     <div class="header-actions">
                         <div class="search-container">
                             <form class="m-0" method="post">
@@ -64,11 +64,6 @@
                     @RenderBody()
                 </main>
 
-                @* <footer class="footer border-top text-body-secondary py-3">
-                    <div class="container">
-                        &copy; 2026 - MailingSystem
-                    </div>
-                </footer> *@
             </div>
         </div>
         
@@ -78,11 +73,12 @@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/tom-select@2.7.0/dist/js/tom-select.complete.min.js"></script>
-
+        
         <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="~/js/compose.js" asp-append-version="true"></script>
         <script src="~/js/recipients.js" asp-append-version="true"></script>
         <script src="~/js/mail-editor.bundle.js" asp-append-version="true" defer></script>
+        <script src="~/js/toaster.bundle.js" asp-append-version="true" defer></script>
         @await RenderSectionAsync("Scripts", required: false)
     </body>
 

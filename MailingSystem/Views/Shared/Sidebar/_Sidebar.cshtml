@@ -4,7 +4,7 @@
     var unreadCounts = await MailService.GetUnreadCountsAsync();
     var folders = new[]
     {
-        (Name: "Inbox", Action: "Index", Icon: "bi-inbox"),
+        (Name: "Inbox", Action: "Inbox", Icon: "bi-inbox"),
         (Name: "Sent", Action: "Sent", Icon: "bi-send"),
         (Name: "Archive", Action: "Archive", Icon: "bi-archive"),
         (Name: "Drafts", Action: "Drafts", Icon: "bi-file-earmark-text")
@@ -14,13 +14,11 @@
     <div class="compose-container">
         <div class="compose-split-button" role="group" aria-label="@Localizer["ComposeOptions"]">
 
-            <!-- Main action: Full page -->
             <a asp-controller="Home" asp-action="Compose" class="btn compose-main-btn">
                 <i class="bi bi-pencil-square"></i>
                 <span>@Localizer["Compose"]</span>
             </a>
 
-            <!-- Secondary action: Dropdown -->
             <button type="button" class="btn compose-options-btn dropdown-toggle dropdown-toggle-split"
                     data-bs-toggle="dropdown" aria-expanded="false" aria-label="@Localizer["ComposeOptions"]">
                 <span class="visually-hidden">@Localizer["ComposeOptions"]</span>

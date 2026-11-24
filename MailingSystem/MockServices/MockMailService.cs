@@ -6,39 +6,39 @@ namespace Services
 {
     public class MockMailService : IMailService
     {
-        private List<Mail> _mails = GenerateMail(60);
+        private readonly List<Mail> _mails = GenerateMail(60);
+
         // Create Random Date for the sake of the Design :)
-        public static DateTime GetRandomDateTime()
+        private static DateTime GetRandomDateTime()
         {
             var daysAgo = Random.Shared.Next(0, 30);
             var hoursAgo = Random.Shared.Next(0, 24);
             var minutesAgo = Random.Shared.Next(0, 60);
 
-            return DateTime.Now
-                .AddDays(-daysAgo)
-                .AddHours(-hoursAgo)
-                .AddMinutes(-minutesAgo);
+            return DateTime.Now.AddDays(-daysAgo).AddHours(-hoursAgo).AddMinutes(-minutesAgo);
         }
 
         private readonly object _lock = new();
 
-
         private static List<Mail> GenerateMail(int quantity)
         {
-            return Enumerable.Range(1, quantity)
-            .Select(i => new Mail
-            {
-                Id = Guid.NewGuid(),
-                Subject = $"Sample Message {i:00}",
-                Body = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, deserunt. Quasi veniam porro perspiciatis eum repellendus voluptatibus atque ex numquam inventore molestias maxime cupiditate, doloremque fuga consequuntur officia accusantium odio quidem iste tenetur illum cum commodi ipsa vitae? Magni dolor eos aliquid expedita voluptatibus libero!",
-                From = $"sender{i:00}@example.com",
-                To = $"recipient{i:00}@example.com",
-                IsRead = i % 3 == 0,
-                SentAt = GetRandomDateTime()
-            })
-            .OrderByDescending(m => m.SentAt)
-            .ToList();
+            return Enumerable
+                .Range(1, quantity)
+                .Select(i => new Mail
+                {
+                    Id = Guid.NewGuid(),
+                    Subject = $"Sample Message {i:00}",
+                    Body =
+                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, deserunt. Quasi veniam porro perspiciatis eum repellendus voluptatibus atque ex numquam inventore molestias maxime cupiditate, doloremque fuga consequuntur officia accusantium odio quidem iste tenetur illum cum commodi ipsa vitae? Magni dolor eos aliquid expedita voluptatibus libero!",
+                    From = $"sender{i:00}@example.com",
+                    To = $"recipient{i:00}@example.com",
+                    IsRead = i % 3 == 0,
+                    SentAt = GetRandomDateTime(),
+                })
+                .OrderByDescending(m => m.SentAt)
+                .ToList();
         }
+
         public Task<IReadOnlyList<Mail>> GetAllAsync()
         {
             // lock thread (thread safety);
@@ -57,7 +57,7 @@ namespace Services
                     ["Inbox"] = _mails.Count(mail => !mail.IsRead),
                     ["Sent"] = _mails.Skip(10).Take(10).Count(mail => !mail.IsRead),
                     ["Archive"] = _mails.Skip(20).Take(5).Count(mail => !mail.IsRead),
-                    ["Drafts"] = _mails.Skip(30).Take(3).Count(mail => !mail.IsRead)
+                    ["Drafts"] = _mails.Skip(30).Take(3).Count(mail => !mail.IsRead),
                 };
                 return Task.FromResult(counts);
             }
@@ -67,16 +67,18 @@ namespace Services
         {
             lock (_lock)
             {
-                _mails.Add(new Mail
-                {
-                    Id = Guid.NewGuid(),
-                    Subject = model.Subject,
-                    Body = model.Content,
-                    From = "demo@example.com",
-                    To = model.Recipient,
-                    IsRead = false,
-                    SentAt = GetRandomDateTime()
-                });
+                _mails.Add(
+                    new Mail
+                    {
+                        Id = Guid.NewGuid(),
+                        Subject = model.Subject,
+                        Body = model.Content,
+                        From = "demo@example.com",
+                        To = model.Recipient,
+                        IsRead = false,
+                        SentAt = GetRandomDateTime(),
+                    }
+                );
             }
 
             return Task.CompletedTask;
@@ -97,13 +99,15 @@ namespace Services
                     .Take(pageSize)
                     .ToList();
 
-                return Task.FromResult(new PaginatedResult<Mail>
-                {
-                    Items = items,
-                    CurrentPage = page,
-                    PageSize = pageSize,
-                    TotalCount = totalCount
-                });
+                return Task.FromResult(
+                    new PaginatedResult<Mail>
+                    {
+                        Items = items,
+                        CurrentPage = page,
+                        PageSize = pageSize,
+                        TotalCount = totalCount,
+                    }
+                );
             }
         }
 
@@ -120,7 +124,6 @@ namespace Services
         {
             lock (_lock)
             {
-
                 var customMails = _mails.Slice(10, 10);
                 page = Math.Max(1, page);
 
@@ -134,13 +137,15 @@ namespace Services
                     .Take(pageSize)
                     .ToList();
 
-                return Task.FromResult(new PaginatedResult<Mail>
-                {
-                    Items = items,
-                    CurrentPage = page,
-                    PageSize = pageSize,
-                    TotalCount = totalCount
-                });
+                return Task.FromResult(
+                    new PaginatedResult<Mail>
+                    {
+                        Items = items,
+                        CurrentPage = page,
+                        PageSize = pageSize,
+                        TotalCount = totalCount,
+                    }
+                );
             }
         }
 
@@ -148,7 +153,6 @@ namespace Services
         {
             lock (_lock)
             {
-
                 var customMails = _mails.Slice(20, 5);
                 page = Math.Max(1, page);
 
@@ -162,13 +166,15 @@ namespace Services
                     .Take(pageSize)
                     .ToList();
 
-                return Task.FromResult(new PaginatedResult<Mail>
-                {
-                    Items = items,
-                    CurrentPage = page,
-                    PageSize = pageSize,
-                    TotalCount = totalCount
-                });
+                return Task.FromResult(
+                    new PaginatedResult<Mail>
+                    {
+                        Items = items,
+                        CurrentPage = page,
+                        PageSize = pageSize,
+                        TotalCount = totalCount,
+                    }
+                );
             }
         }
 
@@ -176,7 +182,6 @@ namespace Services
         {
             lock (_lock)
             {
-
                 var customMails = _mails.Slice(30, 3);
                 page = Math.Max(1, page);
 
@@ -190,13 +195,24 @@ namespace Services
                     .Take(pageSize)
                     .ToList();
 
-                return Task.FromResult(new PaginatedResult<Mail>
-                {
-                    Items = items,
-                    CurrentPage = page,
-                    PageSize = pageSize,
-                    TotalCount = totalCount
-                });
+                return Task.FromResult(
+                    new PaginatedResult<Mail>
+                    {
+                        Items = items,
+                        CurrentPage = page,
+                        PageSize = pageSize,
+                        TotalCount = totalCount,
+                    }
+                );
+            }
+        }
+
+        public Task<string> GetMailTitle(Guid id)
+        {
+            lock (_lock)
+            {
+                var title = _mails.FirstOrDefault(m => m.Id == id)?.Subject ?? string.Empty;
+                return Task.FromResult(title);
             }
         }
     }

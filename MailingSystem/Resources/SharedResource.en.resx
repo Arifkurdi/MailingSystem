@@ -108,6 +108,12 @@
   <data name="NewMessage" xml:space="preserve">
     <value>New Message</value>
   </data>
+  <data name="Reply" xml:space="preserve">
+    <value>Reply</value>
+  </data>
+  <data name="ReplyToMessageTitle" xml:space="preserve">
+    <value>Reply To {0}</value>
+  </data>
   <data name="NewMessageNotification" xml:space="preserve">
     <value>You have a new incoming message.</value>
   </data>

@@ -7,7 +7,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 builder.Services.Configure<RequestLocalizationOptions>(options =>
 {
-    options.SetDefaultCulture("en")
+    options
+        .SetDefaultCulture("en")
         // Culture controls date and number formatting.
         .AddSupportedCultures("en", "ar")
         // UI culture selects the translated resource strings.
@@ -34,10 +35,7 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
-app.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}")
+app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Inbox}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();

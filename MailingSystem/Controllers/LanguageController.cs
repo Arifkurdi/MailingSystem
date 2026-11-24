@@ -22,9 +22,10 @@ public class LanguageController : Controller
                 HttpOnly = true,
                 Secure = Request.IsHttps,
                 SameSite = SameSiteMode.Lax,
-                IsEssential = true
-            });
+                IsEssential = true,
+            }
+        );
 
-        return LocalRedirect(Url.IsLocalUrl(returnUrl) ? returnUrl! : Url.Action("Index", "Home")!);
+        return LocalRedirect(Url.IsLocalUrl(returnUrl) ? returnUrl! : Url.Action("Inbox", "Home")!);
     }
 }

@@ -5,28 +5,29 @@
     ViewData["ActiveFolder"] = Model.FolderName;
     var isRtl = CultureInfo.CurrentUICulture.TextInfo.IsRightToLeft;
     var backIcon = isRtl ? "bi-arrow-right" : "bi-arrow-left";
-    var refreshLabel = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "ar" ? "إعادة توجيه" : "Forward";
 }
-
 <div class="mail-details">
-
-    <!-- Toolbar -->
-    <div class="details-toolbar">
-        <a asp-controller="Home" asp-action="@Model.FolderAction" asp-route-page="@Model.FolderPage" class="back-button action-button">
-            <i class="bi @backIcon" aria-hidden="true"></i>
-            <span>@Localizer["BackToFolder", Localizer[Model.FolderName].Value]</span>
-        </a>
-
-        <div class="toolbar-actions">
-            <a asp-controller="" asp-action="" asp-route-id="@Model.Mail.Id" asp-route-page="" class="action-button">
-                <i class="bi bi-reply"></i>
-                <span>@refreshLabel</span>
-            </a>
-        </div>
-    </div>
-
+    
     <!-- Message -->
     <article class="message-card">
+        <!-- Toolbar -->
+        <div class="details-toolbar">
+            <a asp-controller="Home" asp-action="@Model.FolderAction" asp-route-page="@Model.FolderPage" class="back-button action-button">
+                <i class="bi @backIcon" aria-hidden="true"></i>
+                <span>@Localizer["BackToFolder", Localizer[Model.FolderName].Value]</span>
+            </a>
+
+            <div class="toolbar-actions">
+                <a asp-controller="Home" asp-action="Compose" asp-route-id="@Model.Mail.Id"
+                   class="action-button" aria-label="@Localizer["Reply"]" title="@Localizer["Reply"]">
+                    <i class="bi bi-reply" aria-hidden="true"></i>
+                </a>
+                <a asp-controller="" asp-action="" asp-route-id="@Model.Mail.Id" asp-route-page="" class="action-button">
+                    <i class="bi bi-send-arrow-up"></i>
+                </a>
+                
+            </div>
+        </div>
 
         <header class="message-header">
             <h1 class="message-subject" dir="auto">

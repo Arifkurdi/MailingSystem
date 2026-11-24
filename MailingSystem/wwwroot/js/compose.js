@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeButton = document.getElementById("closeCompose");
   const minimizeButton = document.getElementById("minimizeCompose");
   const maximizeButton = document.getElementById("maximizeCompose");
+  const title = document.getElementById("composeTitle");
 
   if (!compose) return;
 
@@ -17,8 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("click", (event) => {
-    if (event.target.closest("#openCompose, [data-compose-open]")) {
+    const trigger = event.target.closest("#openCompose, [data-compose-open]");
+    if (trigger) {
       event.preventDefault();
+      const replyToId = trigger.dataset.replyToId || "";
+      const replyToInput = compose.querySelector('[name="ReplyToId"]');
+      
+
+      if (replyToInput) replyToInput.value = replyToId;
+      if (title) {
+        title.textContent = replyToId ? title.dataset.replyLabel : title.dataset.newMessageLabel;
+      }
       setMinimized(false);
       compose.hidden = false;
       compose.querySelector('[name="Title"]')?.focus();

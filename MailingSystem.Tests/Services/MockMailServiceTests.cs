@@ -7,6 +7,27 @@ namespace MailingSystem.Tests.Services;
 
 public class MockMailServiceTests
 {
+    [Theory]
+    [InlineData("00000000-0000-0000-0000-000000000000")]
+    [InlineData("11111111-1111-1111-1111-111111111111")]
+    public async Task GetMailTitle_WhenMailDoesNotExist_ReturnsEmptyString(string id)
+    {
+        var service = new MockMailService();
+
+        var title = await service.GetMailTitle(Guid.Parse(id));
+
+        Assert.Equal(string.Empty, title);
+    }
+
+    [Fact]
+    public async Task GetMailTitle_WhenMailExists_ReturnsItsSubject()
+    {
+        var service = new MockMailService();
+        var mail = (await service.GetAllAsync())[0];
+
+        Assert.Equal(mail.Subject, await service.GetMailTitle(mail.Id));
+    }
+
     [Fact]
     public async Task GetByIdAsync_WhenMailDoesNotExist_ReturnsNull()
     {

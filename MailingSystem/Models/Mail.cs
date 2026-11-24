@@ -8,7 +8,7 @@ public class Mail
     public Guid Id { get; set; }
 
     [Required]
-    public required string Subject { get; set; }
+    public string Subject { get; set; } = String.Empty;
 
     [Required]
     public required string Body { get; set; }

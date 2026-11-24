@@ -44,6 +44,12 @@ internal sealed class StubMailService : IMailService
         return Task.FromResult(MailResult);
     }
 
+    public Task<string> GetMailTitle(Guid id)
+    {
+        RequestedId = id;
+        return Task.FromResult(MailResult?.Id == id ? MailResult.Subject : string.Empty);
+    }
+
     public Task<IReadOnlyList<Mail>> GetAllAsync() => throw new NotSupportedException();
 
     public Task<IReadOnlyDictionary<string, int>> GetUnreadCountsAsync()

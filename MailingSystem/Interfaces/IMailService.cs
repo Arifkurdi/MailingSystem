@@ -18,4 +18,5 @@ public interface IMailService
     public Task CreateAsync(CreateMailViewModel model);
 
     public Task<Mail?> GetByIdAsync(Guid Id);
+    public Task<string> GetMailTitle(Guid id);
 }

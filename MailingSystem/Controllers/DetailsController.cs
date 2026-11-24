@@ -2,10 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MailingSystem.Models;
 using MailingSystem.ViewModel;
-using Microsoft.AspNetCore.Razor.TagHelpers;
-using Services;
 using Services.Interface;
-using ViewModel;
 
 namespace MailingSystem.Controllers;
 

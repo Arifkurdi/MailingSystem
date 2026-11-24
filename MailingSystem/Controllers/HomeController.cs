@@ -1,9 +1,8 @@
 using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using MailingSystem.Models;
+using Microsoft.AspNetCore.Mvc;
 using Services.Interface;
 using ViewModel;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MailingSystem.Controllers;
 
@@ -12,17 +11,12 @@ public class HomeController(IMailService mailService) : Controller
     private readonly IMailService _mailService = mailService;
 
     [HttpGet]
-    public async Task<IActionResult> Index(int page = 1)
+    public async Task<IActionResult> Inbox(int page = 1)
     {
         const int pageSize = 15;
 
         var mails = await _mailService.GetInboxPaginatedAsync(page, pageSize);
-        var model = new HomeViewModel
-        {
-
-            FolderName = "Inbox",
-            Mails = mails,
-        };
+        var model = new HomeViewModel { FolderName = "Inbox", Mails = mails };
 
         return View(model);
     }
@@ -30,7 +24,9 @@ public class HomeController(IMailService mailService) : Controller
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View(
+            new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier }
+        );
     }
 
     [HttpGet]
@@ -39,14 +35,9 @@ public class HomeController(IMailService mailService) : Controller
         const int pageSize = 15;
 
         var mails = await _mailService.GetSentPaginatedAsync(page, pageSize);
-        var model = new HomeViewModel
-        {
+        var model = new HomeViewModel { FolderName = "Sent", Mails = mails };
 
-            FolderName = "Sent",
-            Mails = mails,
-        };
-
-        return View("Index", model);
+        return View("Inbox", model);
     }
 
     [HttpGet]
@@ -55,14 +46,9 @@ public class HomeController(IMailService mailService) : Controller
         const int pageSize = 15;
 
         var mails = await _mailService.GetArchivePaginatedAsync(page, pageSize);
-        var model = new HomeViewModel
-        {
+        var model = new HomeViewModel { FolderName = "Archive", Mails = mails };
 
-            FolderName = "Archive",
-            Mails = mails,
-        };
-
-        return View("Index", model);
+        return View("Inbox", model);
     }
 
     [HttpGet]
@@ -71,18 +57,28 @@ public class HomeController(IMailService mailService) : Controller
         const int pageSize = 15;
 
         var mails = await _mailService.GetDraftsPaginatedAsync(page, pageSize);
-        var model = new HomeViewModel
-        {
-            FolderName = "Drafts",
-            Mails = mails,
-        };
+        var model = new HomeViewModel { FolderName = "Drafts", Mails = mails };
 
-        return View("Index", model);
+        return View("Inbox", model);
     }
 
-
-    public IActionResult Compose()
+    [HttpGet]
+    public async Task<IActionResult> Compose(Guid id = default)
     {
-        return View();
+        if (id == Guid.Empty)
+            return View(new ComposeViewModel());
+
+        var mail = await _mailService.GetByIdAsync(id);
+        if (mail is null)
+            return NotFound();
+
+        var model = new ComposeViewModel
+        {
+            ReplyToId = mail.Id,
+            ReplyToTitle = mail.Subject,
+            ReplyToAddress = mail.From,
+        };
+
+        return View(model);
     }
 }

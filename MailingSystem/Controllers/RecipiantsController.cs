@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
+namespace MailingSystem.Controllers;
+
 [Route("api/recipients")]
 public class RecipientsController : Controller
 {
@@ -8,7 +10,7 @@ public class RecipientsController : Controller
         new("1", "Ahmed Ali", "ahmed@example.com"),
         new("2", "Sara Hassan", "sara@example.com"),
         new("3", "Mohammed Ibrahim", "mohammed@example.com"),
-        new("4", "Mona Ahmed", "mona@example.com")
+        new("4", "Mona Ahmed", "Amjed@example.com"),
     ];
 
     [HttpGet("search")]
@@ -19,8 +21,9 @@ public class RecipientsController : Controller
 
         var results = Recipients
             .Where(r =>
-                r.Name.Contains(query, StringComparison.OrdinalIgnoreCase) ||
-                r.Email.Contains(query, StringComparison.OrdinalIgnoreCase))
+                r.Name.Contains(query, StringComparison.OrdinalIgnoreCase)
+                || r.Email.Contains(query, StringComparison.OrdinalIgnoreCase)
+            )
             .Take(10)
             .ToList();
 

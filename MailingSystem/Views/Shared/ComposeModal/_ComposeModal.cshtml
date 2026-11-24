@@ -1,7 +1,12 @@
+@using ViewModel
+@{
+    var model = new ComposeViewModel();
+}
 <div id="composeWindow" class="compose-window" role="dialog" aria-modal="false" aria-labelledby="composeTitle" hidden>
 
     <div class="compose-header">
-        <span id="composeTitle">@Localizer["NewMessage"]</span>
+        <span id="composeTitle" data-new-message-label="@Localizer["NewMessage"]"
+              data-reply-label="@Localizer["Reply"]">@Localizer["NewMessage"]</span>
 
         <div class="compose-header-actions">
             <button type="button" id="minimizeCompose" aria-label="@Localizer["Minimize"]">
@@ -17,6 +22,7 @@
     </div>
 
     @await Html.PartialAsync("~/Views/Shared/ComposeEditor/_ComposeForm.cshtml",
+        model: model,
         viewData: new Microsoft.AspNetCore.Mvc.ViewFeatures.ViewDataDictionary(ViewData)
         {
             ["ComposeIdPrefix"] = "compose"

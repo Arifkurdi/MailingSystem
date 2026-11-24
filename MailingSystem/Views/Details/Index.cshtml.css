@@ -8,9 +8,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  padding: 10px;
 }
 
 .toolbar-actions {
